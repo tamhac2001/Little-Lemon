@@ -5,14 +5,20 @@
 //  Created by Tam Hac on 26/02/2024.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct Little_LemonApp: App {
+    init() {
+        SwiftInjectModule.shared.injectModules(modelContext: sharedModelContainer.mainContext)
+    }
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            UserEntity.self,
+            SettingEntity.self,
+            MenuItemEntity.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
